@@ -18,10 +18,9 @@ h1{font-family:'Fraunces',Georgia,serif;font-size:54px;font-weight:500;letter-sp
 .subtitle .dot{margin:0 10px;opacity:0.6}
 .map-card{background:#FFFFFF;border:0.5px solid #E5E2D8;border-radius:14px;padding:18px;margin-bottom:40px;box-shadow:0 1px 3px rgba(26,26,26,0.03)}
 #map{display:block;width:100%;height:auto;border-radius:8px;overflow:hidden}
-.legend{display:flex;gap:32px;justify-content:center;margin-top:16px;font-size:12px;color:#6B6B66;letter-spacing:0.02em}
+.legend{display:flex;gap:28px;justify-content:center;margin-top:16px;font-size:12px;color:#6B6B66;letter-spacing:0.02em;flex-wrap:wrap}
 .legend-item{display:flex;align-items:center;gap:10px}
 .country{fill:#E5E2DA;stroke:#FFFFFF;stroke-width:0.5}
-.water-bg{fill:#F0EBE0}
 .city-dot{fill:#1A1A1A;stroke:#FFFFFF;stroke-width:2.5}
 .city-name-text{font-family:'Fraunces',Georgia,serif;font-size:14px;font-weight:600;fill:#1A1A1A}
 .city-date-text{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:11.5px;fill:#6B6B66}
@@ -30,7 +29,7 @@ h1{font-family:'Fraunces',Georgia,serif;font-size:54px;font-weight:500;letter-sp
 table.itinerary{width:100%;border-collapse:collapse;background:#FFFFFF;border:0.5px solid #E5E2D8;border-radius:14px;overflow:hidden}
 table.itinerary th{font-family:'IBM Plex Sans',sans-serif;font-size:10.5px;letter-spacing:0.16em;color:#9B9A93;text-transform:uppercase;font-weight:500;text-align:left;padding:16px 20px;background:#FBF9F4;border-bottom:0.5px solid #E5E2D8}
 table.itinerary th.right{text-align:right}
-table.itinerary td{font-family:'Fraunces',Georgia,serif;font-size:15.5px;padding:18px 20px;border-bottom:0.5px solid #EFEDE5;color:#1A1A1A;vertical-align:middle}
+table.itinerary td{font-family:'Fraunces',Georgia,serif;font-size:15.5px;padding:18px 20px;border-bottom:0.5px solid #EFEDE5;color:#1A1A1A;vertical-align:middle;transition:color 0.2s}
 table.itinerary td.dim{color:#9B9A93;font-style:italic;font-size:14px}
 table.itinerary td.right{text-align:right}
 table.itinerary tr:last-child td{border-bottom:none}
@@ -42,22 +41,31 @@ table.itinerary tr:last-child td{border-bottom:none}
 .b-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .b-info{flex:1;min-width:0}
 .b-name{font-family:'Fraunces',Georgia,serif;font-size:16px;font-weight:500;line-height:1.25;color:#1A1A1A}
-.b-desc{font-size:12.5px;color:#6B6B66;margin-top:5px;line-height:1.5}
+.b-desc{font-size:12.5px;color:#6B6B66;margin-top:5px;line-height:1.5;transition:color 0.2s}
 .b-right{display:flex;align-items:center;gap:16px;flex-shrink:0}
 .b-price{text-align:right}
 .b-price-main{font-family:'Fraunces',Georgia,serif;font-size:18px;font-weight:500;color:#1A1A1A}
 .b-price-sub{font-size:11px;color:#9B9A93;margin-top:2px;letter-spacing:0.02em}
 .b-btn{display:inline-block;font-family:'IBM Plex Sans',sans-serif;font-size:12px;padding:9px 20px;background:#1A1A1A;color:#FFFFFF;border-radius:8px;text-decoration:none;font-weight:500;white-space:nowrap;letter-spacing:0.04em;text-transform:uppercase;transition:background 0.15s}
 .b-btn:hover{background:#3D3D3A}
+.transit-select-wrap{position:relative;display:inline-block;max-width:100%}
+.transit-select-wrap::after{content:'';position:absolute;right:5px;top:50%;width:7px;height:7px;border-right:1.5px solid #6B6B66;border-bottom:1.5px solid #6B6B66;transform:translateY(-75%) rotate(45deg);pointer-events:none}
+.transit-select{font-family:'Fraunces',Georgia,serif;font-size:16px;font-weight:500;color:#1A1A1A;background:transparent;border:none;padding:0 22px 2px 0;cursor:pointer;appearance:none;-webkit-appearance:none;-moz-appearance:none;outline:none;line-height:1.3;border-bottom:1px dotted #C9C6BD;max-width:100%}
+.transit-select:hover{border-bottom-color:#1A1A1A}
+.transit-select:focus{border-bottom:1px solid #1A1A1A}
+.transit-select optgroup{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:400;color:#9B9A93;font-size:12px;letter-spacing:0.04em}
+.transit-select option{font-family:'IBM Plex Sans',sans-serif;font-style:normal;color:#1A1A1A;font-size:13px;padding:6px 0;font-weight:400}
+.transit-note{background:#FBF9F4;border:0.5px solid #E5E2D8;border-radius:10px;padding:12px 18px;font-size:12.5px;color:#6B6B66;font-style:italic;font-family:'Fraunces',Georgia,serif;margin:0 0 10px;text-align:center;line-height:1.5}
+.transit-note.hidden{display:none}
 .total-card{background:#1A1A1A;color:#F8F5EE;border-radius:14px;padding:28px 32px;margin-top:32px;display:flex;justify-content:space-between;align-items:baseline}
 .total-label{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:18px;opacity:0.7}
-.total-value{font-family:'Fraunces',Georgia,serif;font-size:44px;font-weight:500;letter-spacing:-0.015em;line-height:1}
+.total-value{font-family:'Fraunces',Georgia,serif;font-size:44px;font-weight:500;letter-spacing:-0.015em;line-height:1;transition:opacity 0.2s}
+.total-value.pulse{opacity:0.4}
 .total-note{font-size:12px;color:#6B6B66;margin-top:18px;line-height:1.65;text-align:center;font-style:italic;font-family:'Fraunces',Georgia,serif}
 .policy-note{background:#FEF7E0;border:0.5px solid #F0D879;border-radius:10px;padding:14px 18px;margin:14px 0;font-size:13px;color:#5C4A0A;line-height:1.55}
 .policy-note strong{font-weight:600}
 footer{text-align:center;margin-top:60px;font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:11px;color:#A8A69D;letter-spacing:0.08em}
-footer a{color:#6B6B66;text-decoration:none;border-bottom:0.5px solid #C9C6BD}
-@media (max-width:600px){body{padding:32px 16px 60px}h1{font-size:40px}.subtitle{font-size:15px}.subtitle .dot{margin:0 6px}table.itinerary th{padding:12px 14px;font-size:9.5px}table.itinerary td{padding:14px}.booking{flex-wrap:wrap;gap:12px}.b-right{width:100%;justify-content:space-between;margin-left:62px}.total-value{font-size:36px}}
+@media (max-width:600px){body{padding:32px 16px 60px}h1{font-size:40px}.subtitle{font-size:15px}.subtitle .dot{margin:0 6px}table.itinerary th{padding:12px 14px;font-size:9.5px}table.itinerary td{padding:14px}.booking{flex-wrap:wrap;gap:12px}.b-right{width:100%;justify-content:space-between;margin-left:62px}.total-value{font-size:36px}.legend{gap:18px}}
 @media print{body{background:#FFFFFF;padding:20px}.b-btn{display:none}.booking:hover{transform:none}.total-card{background:#F0EBE0;color:#1A1A1A}}
 </style>
 </head>
@@ -77,10 +85,9 @@ footer a{color:#6B6B66;text-decoration:none;border-bottom:0.5px solid #C9C6BD}
 <g id="cities"></g>
 </svg>
 <div class="legend">
-<div class="legend-item">
-<svg width="28" height="3"><line x1="0" y1="1.5" x2="28" y2="1.5" stroke="#6E94C9" stroke-width="2" stroke-dasharray="5,4"/></svg>
-<span>Flight</span>
-</div>
+<div class="legend-item"><svg width="28" height="3"><line x1="0" y1="1.5" x2="28" y2="1.5" stroke="#6E94C9" stroke-width="2" stroke-dasharray="5,4"/></svg><span>Flight</span></div>
+<div class="legend-item"><svg width="28" height="3"><line x1="0" y1="1.5" x2="28" y2="1.5" stroke="#7BAA6E" stroke-width="2"/></svg><span>Train</span></div>
+<div class="legend-item"><svg width="28" height="3"><line x1="0" y1="1.5" x2="28" y2="1.5" stroke="#2DA89A" stroke-width="2"/></svg><span>Ferry</span></div>
 </div>
 </section>
 
@@ -90,12 +97,12 @@ footer a{color:#6B6B66;text-decoration:none;border-bottom:0.5px solid #C9C6BD}
 </thead>
 <tbody>
 <tr><td>May 30</td><td>Arrive Copenhagen</td><td class="dim">Long-haul flight from US</td><td class="right"></td></tr>
-<tr><td>May 30 – Jun 1</td><td>Copenhagen</td><td class="dim">—</td><td class="right"><span class="night-badge">2</span></td></tr>
-<tr><td>Jun 1</td><td>Copenhagen → Stockholm</td><td>SAS flight</td><td class="right"></td></tr>
-<tr><td>Jun 1 – 3</td><td>Stockholm</td><td class="dim">—</td><td class="right"><span class="night-badge">2</span></td></tr>
-<tr><td>Jun 3</td><td>Stockholm → Helsinki</td><td>Finnair flight</td><td class="right"></td></tr>
+<tr><td id="row-cph-dates">May 30 – Jun 1</td><td>Copenhagen</td><td class="dim">—</td><td class="right"><span class="night-badge" id="row-cph-nights">2</span></td></tr>
+<tr><td id="row-cph-sto-date">Jun 1</td><td>Copenhagen → Stockholm</td><td id="row-cph-sto-transport">SAS flight</td><td class="right"></td></tr>
+<tr><td id="row-sto-dates">Jun 1 – 3</td><td>Stockholm</td><td class="dim">—</td><td class="right"><span class="night-badge" id="row-sto-nights">2</span></td></tr>
+<tr><td id="row-sto-hel-date">Jun 3</td><td>Stockholm → Helsinki</td><td id="row-sto-hel-transport">Finnair flight</td><td class="right"></td></tr>
 <tr><td>Jun 3 – 5</td><td>Helsinki<span class="free-tag">w/ friend</span></td><td class="dim">—</td><td class="right"><span class="night-badge">2</span></td></tr>
-<tr><td>Jun 5</td><td>Helsinki → Riga</td><td>AirBaltic flight</td><td class="right"></td></tr>
+<tr><td>Jun 5</td><td>Helsinki → Riga</td><td id="row-hel-rix-transport">AirBaltic flight</td><td class="right"></td></tr>
 <tr><td>Jun 5 – 9</td><td>Riga<span class="free-tag">w/ friend</span></td><td class="dim">—</td><td class="right"><span class="night-badge">4</span></td></tr>
 <tr><td>Jun 9</td><td>Depart Riga</td><td class="dim">Long-haul flight home</td><td class="right"></td></tr>
 </tbody>
@@ -110,22 +117,36 @@ footer a{color:#6B6B66;text-decoration:none;border-bottom:0.5px solid #C9C6BD}
 <div class="b-desc">Hostel · private room · Vesterbro · 8.6/10 · 10 min walk to Central Station</div>
 </div>
 <div class="b-right">
-<div class="b-price"><div class="b-price-main">$160</div><div class="b-price-sub">$80 × 2 nights</div></div>
+<div class="b-price"><div class="b-price-main" id="steel-price">$160</div><div class="b-price-sub" id="steel-sub">$80 × 2 nights</div></div>
 <a class="b-btn" href="https://www.booking.com/hotel/dk/steel-house-copenhagen.html" target="_blank" rel="noopener">Book</a>
 </div>
 </div>
 
 <div class="booking">
-<div class="b-icon"><svg viewBox="0 0 24 24"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div>
+<div class="b-icon" id="cphsto-icon"><svg viewBox="0 0 24 24"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div>
 <div class="b-info">
-<div class="b-name">SAS flight · CPH → ARN</div>
-<div class="b-desc">Jun 1 · ~1h 15m direct · Scandinavian Airlines</div>
+<div class="transit-select-wrap">
+<select class="transit-select" id="cphsto-select" aria-label="Copenhagen to Stockholm transport option">
+<optgroup label="Flights · Jun 1">
+<option value="sas_early">SAS · 7:05 AM CPH → 8:25 AM ARN</option>
+<option value="sas_mid">SAS · 10:00 AM CPH → 11:20 AM ARN</option>
+<option value="sas_afternoon">SAS · 2:30 PM CPH → 3:50 PM ARN</option>
+<option value="sas_evening">SAS · 7:20 PM CPH → 8:40 PM ARN</option>
+</optgroup>
+<optgroup label="Overnight train · May 31 → Jun 1">
+<option value="snall_night">Snälltåget · 11:30 PM CPH → 7:30 AM STO</option>
+</optgroup>
+</select>
+</div>
+<div class="b-desc" id="cphsto-desc">Jun 1 · CPH 7:05 AM → ARN 8:25 AM · 1h 20m direct · SAS</div>
 </div>
 <div class="b-right">
-<div class="b-price"><div class="b-price-main">$95</div><div class="b-price-sub">one-way</div></div>
-<a class="b-btn" href="https://www.flysas.com/en/flight-routes/copenhagen/stockholm" target="_blank" rel="noopener">Book</a>
+<div class="b-price"><div class="b-price-main" id="cphsto-price">$95</div><div class="b-price-sub" id="cphsto-price-sub">one-way</div></div>
+<a class="b-btn" id="cphsto-link" href="https://www.flysas.com/en/flight-routes/copenhagen/stockholm" target="_blank" rel="noopener">Book</a>
 </div>
 </div>
+
+<div class="transit-note hidden" id="cphsto-note">Overnight train departs Copenhagen Hovedbanegården evening of May 31 and arrives Stockholm Central morning of Jun 1. The couchette counts as your May 31 accommodation, so Copenhagen becomes 1 hotel night.</div>
 
 <div class="booking">
 <div class="b-icon"><svg viewBox="0 0 24 24"><path d="M3 7v10M3 12h18M21 7v10M7 11V8a2 2 0 012-2h6a2 2 0 012 2v3"/></svg></div>
@@ -134,32 +155,56 @@ footer a{color:#6B6B66;text-decoration:none;border-bottom:0.5px solid #C9C6BD}
 <div class="b-desc">Hostel · Norrmalm · 10 min walk to Central Station · 8.1/10 · social vibe</div>
 </div>
 <div class="b-right">
-<div class="b-price"><div class="b-price-main">$70</div><div class="b-price-sub">$35 × 2 nights · dorm</div></div>
+<div class="b-price"><div class="b-price-main" id="generator-price">$70</div><div class="b-price-sub" id="generator-sub">$35 × 2 nights · dorm</div></div>
 <a class="b-btn" href="https://staygenerator.com/hostels/stockholm" target="_blank" rel="noopener">Book</a>
 </div>
 </div>
 
 <div class="booking">
-<div class="b-icon"><svg viewBox="0 0 24 24"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div>
+<div class="b-icon" id="stohel-icon"><svg viewBox="0 0 24 24"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div>
 <div class="b-info">
-<div class="b-name">Finnair flight · ARN → HEL</div>
-<div class="b-desc">Jun 3 · ~1h 10m direct · multiple daily departures</div>
+<div class="transit-select-wrap">
+<select class="transit-select" id="stohel-select" aria-label="Stockholm to Helsinki transport option">
+<optgroup label="Flights · Jun 3">
+<option value="fin_morning">Finnair · 6:55 AM ARN → 9:05 AM HEL</option>
+<option value="fin_midday">Finnair · 10:35 AM ARN → 12:45 PM HEL</option>
+<option value="fin_afternoon">Finnair · 3:25 PM ARN → 5:35 PM HEL</option>
+<option value="fin_evening">Finnair · 8:00 PM ARN → 10:10 PM HEL</option>
+</optgroup>
+<optgroup label="Overnight ferries · Jun 2 → Jun 3">
+<option value="viking">Viking Line · 4:30 PM STO → 10:10 AM HEL</option>
+<option value="silja">Tallink Silja · 5:00 PM STO → 10:30 AM HEL</option>
+</optgroup>
+</select>
+</div>
+<div class="b-desc" id="stohel-desc">Jun 3 · ARN 6:55 AM → HEL 9:05 AM · 1h 10m direct</div>
 </div>
 <div class="b-right">
-<div class="b-price"><div class="b-price-main">$70</div><div class="b-price-sub">one-way</div></div>
-<a class="b-btn" href="https://www.finnair.com" target="_blank" rel="noopener">Book</a>
+<div class="b-price"><div class="b-price-main" id="stohel-price">$100</div><div class="b-price-sub" id="stohel-price-sub">one-way</div></div>
+<a class="b-btn" id="stohel-link" href="https://www.finnair.com" target="_blank" rel="noopener">Book</a>
 </div>
 </div>
+
+<div class="transit-note hidden" id="stohel-note">Overnight ferry departs Stockholm evening of Jun 2 and arrives Helsinki morning of Jun 3. The cabin counts as your Jun 2 accommodation, so Stockholm becomes 1 hotel night.</div>
 
 <div class="booking">
 <div class="b-icon"><svg viewBox="0 0 24 24"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div>
 <div class="b-info">
-<div class="b-name">AirBaltic flight · HEL → RIX</div>
-<div class="b-desc">Jun 5 · ~1h direct · Airbus A220 · free Starlink wifi onboard</div>
+<div class="transit-select-wrap">
+<select class="transit-select" id="helrix-select" aria-label="Helsinki to Riga transport option">
+<optgroup label="Flights · Jun 5">
+<option value="abl_early">AirBaltic · 6:30 AM HEL → 7:30 AM RIX</option>
+<option value="abl_mid">AirBaltic · 11:00 AM HEL → 12:00 PM RIX</option>
+<option value="abl_afternoon">AirBaltic · 2:20 PM HEL → 3:20 PM RIX</option>
+<option value="abl_evening">AirBaltic · 8:35 PM HEL → 9:35 PM RIX</option>
+</optgroup>
+</select>
+</div>
+<div class="b-desc" id="helrix-desc">Jun 5 · HEL 6:30 AM → RIX 7:30 AM · 1h direct · Airbus A220</div>
 </div>
 <div class="b-right">
-<div class="b-price"><div class="b-price-main">$75</div><div class="b-price-sub">one-way</div></div>
-<a class="b-btn" href="https://www.airbaltic.com/en/flight-deals/flights-from-helsinki-to-riga" target="_blank" rel="noopener">Book</a>
+<div class="b-price"><div class="b-price-main" id="helrix-price">$55</div><div class="b-price-sub" id="helrix-price-sub">one-way</div></div>
+<a class="b-btn" id="helrix-link" href="https://www.airbaltic.com/en/flight-deals/flights-from-helsinki-to-riga" target="_blank" rel="noopener">Book</a>
 </div>
 </div>
 
@@ -169,7 +214,7 @@ footer a{color:#6B6B66;text-decoration:none;border-bottom:0.5px solid #C9C6BD}
 
 <div class="total-card">
 <div class="total-label">Estimated total</div>
-<div class="total-value">$470</div>
+<div class="total-value" id="total-value">$500</div>
 </div>
 
 <p class="total-note">Helsinki and Riga stays are free (crashing with a friend). Excludes US round-trip flights,<br>food, activities, and city transit. Prices are early-booking estimates for June 2026.</p>
@@ -181,11 +226,125 @@ footer a{color:#6B6B66;text-decoration:none;border-bottom:0.5px solid #C9C6BD}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
 <script>
+const planeIconSVG = '<svg viewBox="0 0 24 24"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>';
+const shipIconSVG = '<svg viewBox="0 0 24 24"><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1 .6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M19.38 20A11.6 11.6 0 0 0 21 14l-9-4-9 4c0 2.9.94 5.34 2.81 7.76"/><path d="M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6"/><path d="M12 10v4"/><path d="M12 2v3"/></svg>';
+const trainIconSVG = '<svg viewBox="0 0 24 24"><path d="M16 3H8a4 4 0 0 0-4 4v9.5a3.5 3.5 0 0 0 3.5 3.5h.5l-1.5 2h11l-1.5-2h.5a3.5 3.5 0 0 0 3.5-3.5V7a4 4 0 0 0-4-4z"/><path d="M4 11h16"/><circle cx="8.5" cy="15.5" r="0.5" fill="currentColor"/><circle cx="15.5" cy="15.5" r="0.5" fill="currentColor"/></svg>';
+
+const flightFlys = {price: 95, priceSub: 'one-way', url: 'https://www.flysas.com/en/flight-routes/copenhagen/stockholm', iconType: 'plane', cphNights: 2, tableTransport: 'SAS flight', rowDate: 'Jun 1', cphDates: 'May 30 – Jun 1', routeColor: '#6E94C9', routeDashed: true};
+
+const cphstoOptions = {
+  sas_early: Object.assign({}, flightFlys, {desc: 'Jun 1 · CPH 7:05 AM → ARN 8:25 AM · 1h 20m direct · SAS'}),
+  sas_mid: Object.assign({}, flightFlys, {desc: 'Jun 1 · CPH 10:00 AM → ARN 11:20 AM · 1h 20m direct · SAS'}),
+  sas_afternoon: Object.assign({}, flightFlys, {desc: 'Jun 1 · CPH 2:30 PM → ARN 3:50 PM · 1h 20m direct · SAS'}),
+  sas_evening: Object.assign({}, flightFlys, {desc: 'Jun 1 · CPH 7:20 PM → ARN 8:40 PM · 1h 20m direct · SAS'}),
+  snall_night: {
+    desc: 'May 31 · CPH 11:30 PM → STO 7:30 AM · 8h overnight · couchette berth',
+    price: 75,
+    priceSub: 'couchette',
+    url: 'https://www.snalltaget.se/en/berlin',
+    iconType: 'train',
+    cphNights: 1,
+    tableTransport: 'Snälltåget night train',
+    rowDate: 'May 31',
+    cphDates: 'May 30 – 31',
+    routeColor: '#7BAA6E',
+    routeDashed: false
+  }
+};
+
+const flightFinnair = {price: 100, priceSub: 'one-way', url: 'https://www.finnair.com', iconType: 'plane', stockholmNights: 2, tableTransport: 'Finnair flight', rowDate: 'Jun 1 – 3', transitDate: 'Jun 3', routeColor: '#6E94C9', routeDashed: true};
+
+const stohelOptions = {
+  fin_morning: Object.assign({}, flightFinnair, {desc: 'Jun 3 · ARN 6:55 AM → HEL 9:05 AM · 1h 10m direct'}),
+  fin_midday: Object.assign({}, flightFinnair, {desc: 'Jun 3 · ARN 10:35 AM → HEL 12:45 PM · 1h 10m direct'}),
+  fin_afternoon: Object.assign({}, flightFinnair, {desc: 'Jun 3 · ARN 3:25 PM → HEL 5:35 PM · 1h 10m direct'}),
+  fin_evening: Object.assign({}, flightFinnair, {desc: 'Jun 3 · ARN 8:00 PM → HEL 10:10 PM · 1h 10m direct'}),
+  viking: {desc: 'Jun 2 · STO Värtahamnen 4:30 PM → HEL Katajanokka 10:10 AM · 17h 40m overnight · cabin included', price: 80, priceSub: 'cabin included', url: 'https://www.vikingline.com/booking/', iconType: 'ship', stockholmNights: 1, tableTransport: 'Viking Line ferry', rowDate: 'Jun 1 – 2', transitDate: 'Jun 2', routeColor: '#2DA89A', routeDashed: false},
+  silja: {desc: 'Jun 2 · STO Värtahamnen 5:00 PM → HEL Olympia 10:30 AM · 17h 30m overnight · cabin included', price: 120, priceSub: 'cabin included', url: 'https://www.tallinksilja.com', iconType: 'ship', stockholmNights: 1, tableTransport: 'Tallink Silja ferry', rowDate: 'Jun 1 – 2', transitDate: 'Jun 2', routeColor: '#2DA89A', routeDashed: false}
+};
+
+const flightAirBaltic = {price: 55, priceSub: 'one-way', url: 'https://www.airbaltic.com/en/flight-deals/flights-from-helsinki-to-riga', iconType: 'plane', tableTransport: 'AirBaltic flight'};
+
+const helrixOptions = {
+  abl_early: Object.assign({}, flightAirBaltic, {desc: 'Jun 5 · HEL 6:30 AM → RIX 7:30 AM · 1h direct · Airbus A220'}),
+  abl_mid: Object.assign({}, flightAirBaltic, {desc: 'Jun 5 · HEL 11:00 AM → RIX 12:00 PM · 1h direct · Airbus A220'}),
+  abl_afternoon: Object.assign({}, flightAirBaltic, {desc: 'Jun 5 · HEL 2:20 PM → RIX 3:20 PM · 1h direct · Airbus A220'}),
+  abl_evening: Object.assign({}, flightAirBaltic, {desc: 'Jun 5 · HEL 8:35 PM → RIX 9:35 PM · 1h direct · Airbus A220'})
+};
+
+function iconFor(type){ return type === 'ship' ? shipIconSVG : type === 'train' ? trainIconSVG : planeIconSVG; }
+
+function updateCphSto(){
+  const opt = cphstoOptions[document.getElementById('cphsto-select').value];
+  document.getElementById('cphsto-desc').textContent = opt.desc;
+  document.getElementById('cphsto-price').textContent = '$' + opt.price;
+  document.getElementById('cphsto-price-sub').textContent = opt.priceSub;
+  document.getElementById('cphsto-link').href = opt.url;
+  document.getElementById('cphsto-icon').innerHTML = iconFor(opt.iconType);
+  document.getElementById('row-cph-sto-transport').textContent = opt.tableTransport;
+  document.getElementById('row-cph-sto-date').textContent = opt.rowDate;
+  document.getElementById('row-cph-dates').textContent = opt.cphDates;
+  document.getElementById('row-cph-nights').textContent = opt.cphNights;
+  const steelCost = 80 * opt.cphNights;
+  document.getElementById('steel-price').textContent = '$' + steelCost;
+  document.getElementById('steel-sub').textContent = '$80 × ' + opt.cphNights + ' night' + (opt.cphNights > 1 ? 's' : '');
+  const note = document.getElementById('cphsto-note');
+  if (opt.iconType === 'train') note.classList.remove('hidden'); else note.classList.add('hidden');
+  const routeLine = document.getElementById('route-cph-sto');
+  if (routeLine) { routeLine.setAttribute('stroke', opt.routeColor); if (opt.routeDashed) routeLine.setAttribute('stroke-dasharray','5,4'); else routeLine.removeAttribute('stroke-dasharray'); }
+  recalcTotal();
+}
+
+function updateStoHel(){
+  const opt = stohelOptions[document.getElementById('stohel-select').value];
+  document.getElementById('stohel-desc').textContent = opt.desc;
+  document.getElementById('stohel-price').textContent = '$' + opt.price;
+  document.getElementById('stohel-price-sub').textContent = opt.priceSub;
+  document.getElementById('stohel-link').href = opt.url;
+  document.getElementById('stohel-icon').innerHTML = iconFor(opt.iconType);
+  document.getElementById('row-sto-hel-transport').textContent = opt.tableTransport;
+  document.getElementById('row-sto-hel-date').textContent = opt.transitDate;
+  document.getElementById('row-sto-dates').textContent = opt.rowDate;
+  document.getElementById('row-sto-nights').textContent = opt.stockholmNights;
+  const stoCost = 35 * opt.stockholmNights;
+  document.getElementById('generator-price').textContent = '$' + stoCost;
+  document.getElementById('generator-sub').textContent = '$35 × ' + opt.stockholmNights + ' night' + (opt.stockholmNights > 1 ? 's' : '') + ' · dorm';
+  const note = document.getElementById('stohel-note');
+  if (opt.iconType === 'ship') note.classList.remove('hidden'); else note.classList.add('hidden');
+  const routeLine = document.getElementById('route-sto-hel');
+  if (routeLine) { routeLine.setAttribute('stroke', opt.routeColor); if (opt.routeDashed) routeLine.setAttribute('stroke-dasharray','5,4'); else routeLine.removeAttribute('stroke-dasharray'); }
+  recalcTotal();
+}
+
+function updateHelRix(){
+  const opt = helrixOptions[document.getElementById('helrix-select').value];
+  document.getElementById('helrix-desc').textContent = opt.desc;
+  document.getElementById('helrix-price').textContent = '$' + opt.price;
+  document.getElementById('helrix-price-sub').textContent = opt.priceSub;
+  document.getElementById('helrix-link').href = opt.url;
+  document.getElementById('row-hel-rix-transport').textContent = opt.tableTransport;
+  recalcTotal();
+}
+
+function recalcTotal(){
+  const c = cphstoOptions[document.getElementById('cphsto-select').value];
+  const s = stohelOptions[document.getElementById('stohel-select').value];
+  const h = helrixOptions[document.getElementById('helrix-select').value];
+  const total = (80 * c.cphNights) + c.price + (35 * s.stockholmNights) + s.price + h.price;
+  const tv = document.getElementById('total-value');
+  tv.classList.add('pulse');
+  setTimeout(() => { tv.textContent = '$' + total; tv.classList.remove('pulse'); }, 120);
+}
+
+document.getElementById('cphsto-select').addEventListener('change', updateCphSto);
+document.getElementById('stohel-select').addEventListener('change', updateStoHel);
+document.getElementById('helrix-select').addEventListener('change', updateHelRix);
+
 (async function(){
   const svg = document.getElementById('map');
   const W = 720, H = 420;
   try {
-    const world = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json').then(r=>r.json());
+    const world = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json').then(r => r.json());
     const land = topojson.feature(world, world.objects.countries);
     const projection = d3.geoMercator().center([17,59]).scale(1120).translate([W/2, H/2 - 10]);
     const pathGen = d3.geoPath(projection);
@@ -221,24 +380,26 @@ footer a{color:#6B6B66;text-decoration:none;border-bottom:0.5px solid #C9C6BD}
     const proj = c => projection(c.coords);
     const routesG = d3.select('#routes');
 
-    const drawCurve = (a, b, color) => {
+    const drawCurve = (a, b, color, dashed, id) => {
       const [x1,y1] = proj(a), [x2,y2] = proj(b);
       const mx = (x1+x2)/2, my = (y1+y2)/2;
       const dx = x2-x1, dy = y2-y1;
       const len = Math.sqrt(dx*dx+dy*dy);
       const cx = mx - dy/len * 22;
       const cy = my + dx/len * 22;
-      routesG.append('path')
+      const path = routesG.append('path')
         .attr('d', `M ${x1} ${y1} Q ${cx} ${cy} ${x2} ${y2}`)
         .attr('fill','none')
         .attr('stroke', color)
         .attr('stroke-width', 1.75)
-        .attr('stroke-dasharray', '5,4')
         .attr('stroke-linecap','round');
+      if (dashed) path.attr('stroke-dasharray', '5,4');
+      if (id) path.attr('id', id);
+      return path;
     };
-    drawCurve(cities[0], cities[1], '#6E94C9');
-    drawCurve(cities[1], cities[2], '#6E94C9');
-    drawCurve(cities[2], cities[3], '#6E94C9');
+    drawCurve(cities[0], cities[1], '#6E94C9', true, 'route-cph-sto');
+    drawCurve(cities[1], cities[2], '#6E94C9', true, 'route-sto-hel');
+    drawCurve(cities[2], cities[3], '#6E94C9', true, 'route-hel-rix');
 
     const citiesG = d3.select('#cities');
     cities.forEach(c => {
