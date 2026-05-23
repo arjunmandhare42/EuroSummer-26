@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Europe 2026 — Trip Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#F8F5EE;color:#1A1A1A;font-family:'IBM Plex Sans',-apple-system,system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
+body{padding:48px 24px 80px}
+main{max-width:760px;margin:0 auto}
+header{text-align:center;margin-bottom:44px}
+h1{font-family:'Fraunces',Georgia,serif;font-size:54px;font-weight:500;letter-spacing:-0.015em;line-height:1;margin-bottom:14px;font-variation-settings:'opsz' 144}
+.subtitle{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:17px;color:#6B6B66;letter-spacing:0.02em}
+.subtitle .dot{margin:0 10px;opacity:0.6}
+.map-card{background:#FFFFFF;border:0.5px solid #E5E2D8;border-radius:14px;padding:18px;margin-bottom:40px;box-shadow:0 1px 3px rgba(26,26,26,0.03)}
+#map{display:block;width:100%;height:auto;border-radius:8px;overflow:hidden}
+.legend{display:flex;gap:32px;justify-content:center;margin-top:16px;font-size:12px;color:#6B6B66;letter-spacing:0.02em}
+.legend-item{display:flex;align-items:center;gap:10px}
+.country{fill:#E5E2DA;stroke:#FFFFFF;stroke-width:0.5}
+.water-bg{fill:#F0EBE0}
+.city-dot{fill:#1A1A1A;stroke:#FFFFFF;stroke-width:2.5}
+.city-name-text{font-family:'Fraunces',Georgia,serif;font-size:14px;font-weight:600;fill:#1A1A1A}
+.city-date-text{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:11.5px;fill:#6B6B66}
+.country-label{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:10px;fill:#A8A69D;letter-spacing:0.15em;text-transform:uppercase}
+.section-title{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:22px;color:#1A1A1A;font-weight:400;text-align:center;margin:48px 0 20px}
+table.itinerary{width:100%;border-collapse:collapse;background:#FFFFFF;border:0.5px solid #E5E2D8;border-radius:14px;overflow:hidden}
+table.itinerary th{font-family:'IBM Plex Sans',sans-serif;font-size:10.5px;letter-spacing:0.16em;color:#9B9A93;text-transform:uppercase;font-weight:500;text-align:left;padding:16px 20px;background:#FBF9F4;border-bottom:0.5px solid #E5E2D8}
+table.itinerary th.right{text-align:right}
+table.itinerary td{font-family:'Fraunces',Georgia,serif;font-size:15.5px;padding:18px 20px;border-bottom:0.5px solid #EFEDE5;color:#1A1A1A;vertical-align:middle}
+table.itinerary td.dim{color:#9B9A93;font-style:italic;font-size:14px}
+table.itinerary td.right{text-align:right}
+table.itinerary tr:last-child td{border-bottom:none}
+.night-badge{display:inline-block;background:#1A1A1A;color:#FFFFFF;border-radius:14px;padding:4px 16px;font-size:13px;font-family:'IBM Plex Sans',sans-serif;font-weight:500;min-width:28px;text-align:center;letter-spacing:0.02em}
+.free-tag{display:inline-block;background:#E1F1EA;color:#15604A;border-radius:4px;padding:3px 9px;font-size:10.5px;font-family:'IBM Plex Sans',sans-serif;font-weight:500;margin-left:8px;vertical-align:2px;letter-spacing:0.04em;text-transform:uppercase}
+.booking{display:flex;align-items:center;gap:18px;padding:18px 22px;background:#FFFFFF;border:0.5px solid #E5E2D8;border-radius:14px;margin-bottom:10px;transition:border-color 0.15s, transform 0.15s}
+.booking:hover{border-color:#C9C6BD;transform:translateY(-1px)}
+.b-icon{width:44px;height:44px;border-radius:50%;background:#F8F5EE;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#5F5E5A}
+.b-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.b-info{flex:1;min-width:0}
+.b-name{font-family:'Fraunces',Georgia,serif;font-size:16px;font-weight:500;line-height:1.25;color:#1A1A1A}
+.b-desc{font-size:12.5px;color:#6B6B66;margin-top:5px;line-height:1.5}
+.b-right{display:flex;align-items:center;gap:16px;flex-shrink:0}
+.b-price{text-align:right}
+.b-price-main{font-family:'Fraunces',Georgia,serif;font-size:18px;font-weight:500;color:#1A1A1A}
+.b-price-sub{font-size:11px;color:#9B9A93;margin-top:2px;letter-spacing:0.02em}
+.b-btn{display:inline-block;font-family:'IBM Plex Sans',sans-serif;font-size:12px;padding:9px 20px;background:#1A1A1A;color:#FFFFFF;border-radius:8px;text-decoration:none;font-weight:500;white-space:nowrap;letter-spacing:0.04em;text-transform:uppercase;transition:background 0.15s}
+.b-btn:hover{background:#3D3D3A}
+.total-card{background:#1A1A1A;color:#F8F5EE;border-radius:14px;padding:28px 32px;margin-top:32px;display:flex;justify-content:space-between;align-items:baseline}
+.total-label{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:18px;opacity:0.7}
+.total-value{font-family:'Fraunces',Georgia,serif;font-size:44px;font-weight:500;letter-spacing:-0.015em;line-height:1}
+.total-note{font-size:12px;color:#6B6B66;margin-top:18px;line-height:1.65;text-align:center;font-style:italic;font-family:'Fraunces',Georgia,serif}
+.policy-note{background:#FEF7E0;border:0.5px solid #F0D879;border-radius:10px;padding:14px 18px;margin:14px 0;font-size:13px;color:#5C4A0A;line-height:1.55}
+.policy-note strong{font-weight:600}
+footer{text-align:center;margin-top:60px;font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:11px;color:#A8A69D;letter-spacing:0.08em}
+footer a{color:#6B6B66;text-decoration:none;border-bottom:0.5px solid #C9C6BD}
+@media (max-width:600px){body{padding:32px 16px 60px}h1{font-size:40px}.subtitle{font-size:15px}.subtitle .dot{margin:0 6px}table.itinerary th{padding:12px 14px;font-size:9.5px}table.itinerary td{padding:14px}.booking{flex-wrap:wrap;gap:12px}.b-right{width:100%;justify-content:space-between;margin-left:62px}.total-value{font-size:36px}}
+@media print{body{background:#FFFFFF;padding:20px}.b-btn{display:none}.booking:hover{transform:none}.total-card{background:#F0EBE0;color:#1A1A1A}}
+</style>
+</head>
+<body>
+<main>
+
+<header>
+<h1>Europe 2026</h1>
+<p class="subtitle">May 30 – Jun 9<span class="dot">·</span>4 cities<span class="dot">·</span>10 nights</p>
+</header>
+
+<section class="map-card">
+<svg id="map" viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg">
+<g id="countries"></g>
+<g id="country-labels"></g>
+<g id="routes"></g>
+<g id="cities"></g>
+</svg>
+<div class="legend">
+<div class="legend-item">
+<svg width="28" height="3"><line x1="0" y1="1.5" x2="28" y2="1.5" stroke="#6E94C9" stroke-width="2" stroke-dasharray="5,4"/></svg>
+<span>Flight</span>
+</div>
+</div>
+</section>
+
+<table class="itinerary">
+<thead>
+<tr><th>Date</th><th>Route</th><th>Transport</th><th class="right">Nights</th></tr>
+</thead>
+<tbody>
+<tr><td>May 30</td><td>Arrive Copenhagen</td><td class="dim">Long-haul flight from US</td><td class="right"></td></tr>
+<tr><td>May 30 – Jun 1</td><td>Copenhagen</td><td class="dim">—</td><td class="right"><span class="night-badge">2</span></td></tr>
+<tr><td>Jun 1</td><td>Copenhagen → Stockholm</td><td>SAS flight</td><td class="right"></td></tr>
+<tr><td>Jun 1 – 3</td><td>Stockholm</td><td class="dim">—</td><td class="right"><span class="night-badge">2</span></td></tr>
+<tr><td>Jun 3</td><td>Stockholm → Helsinki</td><td>Finnair flight</td><td class="right"></td></tr>
+<tr><td>Jun 3 – 5</td><td>Helsinki<span class="free-tag">w/ friend</span></td><td class="dim">—</td><td class="right"><span class="night-badge">2</span></td></tr>
+<tr><td>Jun 5</td><td>Helsinki → Riga</td><td>AirBaltic flight</td><td class="right"></td></tr>
+<tr><td>Jun 5 – 9</td><td>Riga<span class="free-tag">w/ friend</span></td><td class="dim">—</td><td class="right"><span class="night-badge">4</span></td></tr>
+<tr><td>Jun 9</td><td>Depart Riga</td><td class="dim">Long-haul flight home</td><td class="right"></td></tr>
+</tbody>
+</table>
+
+<h2 class="section-title">Reservations to book</h2>
+
+<div class="booking">
+<div class="b-icon"><svg viewBox="0 0 24 24"><path d="M3 7v10M3 12h18M21 7v10M7 11V8a2 2 0 012-2h6a2 2 0 012 2v3"/></svg></div>
+<div class="b-info">
+<div class="b-name">Steel House Copenhagen</div>
+<div class="b-desc">Hostel · private room · Vesterbro · 8.6/10 · 10 min walk to Central Station</div>
+</div>
+<div class="b-right">
+<div class="b-price"><div class="b-price-main">$160</div><div class="b-price-sub">$80 × 2 nights</div></div>
+<a class="b-btn" href="https://www.booking.com/hotel/dk/steel-house-copenhagen.html" target="_blank" rel="noopener">Book</a>
+</div>
+</div>
+
+<div class="booking">
+<div class="b-icon"><svg viewBox="0 0 24 24"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div>
+<div class="b-info">
+<div class="b-name">SAS flight · CPH → ARN</div>
+<div class="b-desc">Jun 1 · ~1h 15m direct · Scandinavian Airlines</div>
+</div>
+<div class="b-right">
+<div class="b-price"><div class="b-price-main">$95</div><div class="b-price-sub">one-way</div></div>
+<a class="b-btn" href="https://www.flysas.com/en/flight-routes/copenhagen/stockholm" target="_blank" rel="noopener">Book</a>
+</div>
+</div>
+
+<div class="booking">
+<div class="b-icon"><svg viewBox="0 0 24 24"><path d="M3 7v10M3 12h18M21 7v10M7 11V8a2 2 0 012-2h6a2 2 0 012 2v3"/></svg></div>
+<div class="b-info">
+<div class="b-name">Generator Stockholm</div>
+<div class="b-desc">Hostel · Norrmalm · 10 min walk to Central Station · 8.1/10 · social vibe</div>
+</div>
+<div class="b-right">
+<div class="b-price"><div class="b-price-main">$70</div><div class="b-price-sub">$35 × 2 nights · dorm</div></div>
+<a class="b-btn" href="https://staygenerator.com/hostels/stockholm" target="_blank" rel="noopener">Book</a>
+</div>
+</div>
+
+<div class="booking">
+<div class="b-icon"><svg viewBox="0 0 24 24"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div>
+<div class="b-info">
+<div class="b-name">Finnair flight · ARN → HEL</div>
+<div class="b-desc">Jun 3 · ~1h 10m direct · multiple daily departures</div>
+</div>
+<div class="b-right">
+<div class="b-price"><div class="b-price-main">$70</div><div class="b-price-sub">one-way</div></div>
+<a class="b-btn" href="https://www.finnair.com" target="_blank" rel="noopener">Book</a>
+</div>
+</div>
+
+<div class="booking">
+<div class="b-icon"><svg viewBox="0 0 24 24"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div>
+<div class="b-info">
+<div class="b-name">AirBaltic flight · HEL → RIX</div>
+<div class="b-desc">Jun 5 · ~1h direct · Airbus A220 · free Starlink wifi onboard</div>
+</div>
+<div class="b-right">
+<div class="b-price"><div class="b-price-main">$75</div><div class="b-price-sub">one-way</div></div>
+<a class="b-btn" href="https://www.airbaltic.com/en/flight-deals/flights-from-helsinki-to-riga" target="_blank" rel="noopener">Book</a>
+</div>
+</div>
+
+<div class="policy-note">
+<strong>Heads up on Generator Stockholm:</strong> guests under 18 traveling without a parent/guardian must book a private room (not a dorm). Private doubles run ~$120–140/night. If you'll be 18+ by May 30, ignore this — the dorm is fine.
+</div>
+
+<div class="total-card">
+<div class="total-label">Estimated total</div>
+<div class="total-value">$470</div>
+</div>
+
+<p class="total-note">Helsinki and Riga stays are free (crashing with a friend). Excludes US round-trip flights,<br>food, activities, and city transit. Prices are early-booking estimates for June 2026.</p>
+
+<footer>EUROPE 2026  ·  PRINTED FROM TRIP PLAN</footer>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script>
+(async function(){
+  const svg = document.getElementById('map');
+  const W = 720, H = 420;
+  try {
+    const world = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json').then(r=>r.json());
+    const land = topojson.feature(world, world.objects.countries);
+    const projection = d3.geoMercator().center([17,59]).scale(1120).translate([W/2, H/2 - 10]);
+    const pathGen = d3.geoPath(projection);
+
+    d3.select('#countries').selectAll('path').data(land.features).enter().append('path').attr('d', pathGen).attr('class','country');
+
+    const countryLabels = [
+      {name:'SWEDEN', coords:[15.2,61.5]},
+      {name:'NORWAY', coords:[9.5,61.5]},
+      {name:'FINLAND', coords:[26,62.5]},
+      {name:'DENMARK', coords:[9.5,56.2]},
+      {name:'ESTONIA', coords:[25.5,58.7]},
+      {name:'LATVIA', coords:[25.5,56.7]},
+      {name:'LITHUANIA', coords:[24,55.3]},
+      {name:'POLAND', coords:[19,52.3]},
+      {name:'GERMANY', coords:[10.5,52.5]}
+    ];
+    const labelsG = d3.select('#country-labels');
+    countryLabels.forEach(c => {
+      const [x,y] = projection(c.coords);
+      if(x>0 && x<W && y>0 && y<H){
+        labelsG.append('text').attr('class','country-label').attr('x',x).attr('y',y).attr('text-anchor','middle').text(c.name);
+      }
+    });
+
+    const cities = [
+      {id:'cph', name:'Copenhagen', coords:[12.5683,55.6761], dates:'May 30 · 2n', nameOffset:[0,-16], dateOffset:[0,26], anchor:'middle'},
+      {id:'sto', name:'Stockholm', coords:[18.0686,59.3293], dates:'Jun 1 · 2n', nameOffset:[0,-16], dateOffset:[0,26], anchor:'middle'},
+      {id:'hel', name:'Helsinki', coords:[24.9384,60.1699], dates:'Jun 3 · 2n', nameOffset:[20,-2], dateOffset:[20,14], anchor:'start'},
+      {id:'rix', name:'Riga', coords:[24.1052,56.9496], dates:'Jun 5 · 4n', nameOffset:[20,-2], dateOffset:[20,14], anchor:'start'}
+    ];
+
+    const proj = c => projection(c.coords);
+    const routesG = d3.select('#routes');
+
+    const drawCurve = (a, b, color) => {
+      const [x1,y1] = proj(a), [x2,y2] = proj(b);
+      const mx = (x1+x2)/2, my = (y1+y2)/2;
+      const dx = x2-x1, dy = y2-y1;
+      const len = Math.sqrt(dx*dx+dy*dy);
+      const cx = mx - dy/len * 22;
+      const cy = my + dx/len * 22;
+      routesG.append('path')
+        .attr('d', `M ${x1} ${y1} Q ${cx} ${cy} ${x2} ${y2}`)
+        .attr('fill','none')
+        .attr('stroke', color)
+        .attr('stroke-width', 1.75)
+        .attr('stroke-dasharray', '5,4')
+        .attr('stroke-linecap','round');
+    };
+    drawCurve(cities[0], cities[1], '#6E94C9');
+    drawCurve(cities[1], cities[2], '#6E94C9');
+    drawCurve(cities[2], cities[3], '#6E94C9');
+
+    const citiesG = d3.select('#cities');
+    cities.forEach(c => {
+      const [x,y] = proj(c);
+      const g = citiesG.append('g').attr('transform', `translate(${x},${y})`);
+      g.append('circle').attr('r', 6.5).attr('class','city-dot');
+      g.append('text').attr('class','city-name-text').attr('text-anchor', c.anchor).attr('x', c.nameOffset[0]).attr('y', c.nameOffset[1]).text(c.name);
+      g.append('text').attr('class','city-date-text').attr('text-anchor', c.anchor).attr('x', c.dateOffset[0]).attr('y', c.dateOffset[1]).text(c.dates);
+    });
+  } catch(e) {
+    svg.innerHTML = '<rect width="720" height="420" fill="#F0EBE0"/><text x="360" y="210" text-anchor="middle" font-family="Fraunces,serif" font-style="italic" fill="#9B9A93">Map could not load — please check your connection</text>';
+  }
+})();
+</script>
+
+</body>
+</html>
